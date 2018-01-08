@@ -4,19 +4,24 @@ $(document).ready(function() {
 		cards: new Array(),
 		current_total: 0,
 		sumCardTotal: function() {
-			
-		};
+			this.current_total = 0;
+			for (var i = 0; i < this.cards.length; ++i) {
+				var c = this.cards[i];
+				this.current_total += c.value;
+			}
+			$("#hdrTotal").html("Total: " + this.current_total);
+		}
 	};
 	function deal() {
 		for (var i = 0; i < 2; ++i) {
-			hlt();
+			hit();
 		}
-	};
+	}
 	// возвращает случайное число(карту)
 	function getRandom(number) {
 		return Math.floor(Math.random() * number);
-	};
-	function hlt() {
+	}
+	function hit() {
 		var good_card = false;
 		do {
 			var index = getRandom(52);
@@ -34,7 +39,7 @@ $(document).ready(function() {
 			}
 		} while(!good_card);
 		good_card = false;
-	};
+	}
 	$("#btnDeal").click(function() {
 		deal();
 		$(this).toggle();
@@ -44,7 +49,7 @@ $(document).ready(function() {
 		this.name = name;
 		this.suit = suit;
 		this.value = value;
-	};
+	}
 	// колода карт
 	var deck = [
 		new card('ace', 'hearts', 11),
