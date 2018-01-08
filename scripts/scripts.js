@@ -108,5 +108,6 @@ $(document).ready(function() {
 		new card('queen', 'spades', 10),
 		new card('king', 'spades', 10),
 	];
+	
 });
 
